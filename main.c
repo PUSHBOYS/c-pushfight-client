@@ -167,11 +167,23 @@ int main(int argc, char *argv[])
 	wborder(msg_window, ACS_VLINE, ACS_VLINE, ACS_HLINE, ACS_HLINE, ACS_ULCORNER, ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
 	wrefresh(game_window);
 	wrefresh(msg_window);
-	refresh();
+	//refresh();
 
-	printBoard(NULL);
+	bool isRunning = true;
 
-	getch();
+	while(isRunning) {
+		printBoard(NULL);
+		refresh();
+
+		char in = getch();
+		switch (in) {
+			case 'q':
+				isRunning = false;
+				break;
+
+		}
+	}
+
 	endwin();
 
 	return 0;
